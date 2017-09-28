@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 
 
 public class GuiWindow extends Frame implements ActionListener
@@ -13,14 +12,18 @@ public class GuiWindow extends Frame implements ActionListener
 
 	private static final long serialVersionUID = 1L;
 	private TextField tf;
+	//public static ArrayList<String> students;
+	public static String[] students;
 	private int i = 0;
-	public static ArrayList<String> students;
+	private int text_y = 10;
+	private int text_x = 10;
+	private TextField sn;
 
-
-	int clickCount = 0;
+	
 
 	public GuiWindow()
 	{
+		students = new String[24];
 
 		//Setting up the frame
 		setSize(600, 400);
@@ -28,16 +31,16 @@ public class GuiWindow extends Frame implements ActionListener
 		setVisible(true);
 
 		//Creating the only button
-		Button but = new Button("Please Click Me!");
-		but.setBounds(300,380,180,30);
-		//but.addActionListener(this); //add action listener to button
+		Button but = new Button("Add Student");
+		but.setBounds(getWidth()/2 + 260,getHeight() + 50,180,30);
+		but.addActionListener(this); //add action listener to button
 		add(but);
 
 		//Creating a text field
 		Font nameFont = new Font("SansSerif", Font.PLAIN, 24);
 		tf = new TextField();
 		tf.addActionListener(this);
-		tf.setBounds(250, 220, 250, 40);
+		tf.setBounds(getWidth()/2, getHeight() + 50, 250, 40);
 		tf.setFont(nameFont);
 		add(tf);
 
@@ -54,10 +57,24 @@ public class GuiWindow extends Frame implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		students.add(tf.getText());
-		System.out.print(students);
+		String name = tf.getText();
+		students[i] = name;
 		tf.setText("");
-
+		i++;
+		
+		Font nameFont = new Font("SansSerif", Font.PLAIN, 24);
+		sn = new TextField(name);
+		sn.setBounds(text_x, text_y, 250, 40);
+		sn.setFont(nameFont);
+		add(sn);
+		
+		text_y += 50;
+		
+		if(i % 8 == 0)
+		{
+			text_x += 260;
+			text_y = 10;
+		}
 	}
 
 }

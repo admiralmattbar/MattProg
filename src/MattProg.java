@@ -8,7 +8,7 @@ public class MattProg
 	public static void main(String[] args)
 	{
 		
-		GuiWindow gw = new GuiWindow();
+		new GuiWindow();
 		
 	}
 	
