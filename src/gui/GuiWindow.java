@@ -15,7 +15,7 @@ public class GuiWindow extends Frame implements ActionListener
 	//public static ArrayList<String> students;
 	public static String[] students;
 	private int i = 0;
-	private int text_y = 10;
+	private int text_y = 30;
 	private int text_x = 10;
 	private TextField sn;
 
@@ -26,13 +26,13 @@ public class GuiWindow extends Frame implements ActionListener
 		students = new String[24];
 
 		//Setting up the frame
-		setSize(600, 400);
+		setSize(800, 600);
 		setLayout(null);
 		setVisible(true);
 
 		//Creating the only button
 		Button but = new Button("Add Student");
-		but.setBounds(getWidth()/2 + 260,getHeight() + 50,180,30);
+		but.setBounds(getWidth()/2,500,180,30);
 		but.addActionListener(this); //add action listener to button
 		add(but);
 
@@ -40,7 +40,7 @@ public class GuiWindow extends Frame implements ActionListener
 		Font nameFont = new Font("SansSerif", Font.PLAIN, 24);
 		tf = new TextField();
 		tf.addActionListener(this);
-		tf.setBounds(getWidth()/2, getHeight() + 50, 250, 40);
+		tf.setBounds(getWidth()/2 - 260, 500, 250, 40);
 		tf.setFont(nameFont);
 		add(tf);
 
@@ -66,6 +66,7 @@ public class GuiWindow extends Frame implements ActionListener
 		sn = new TextField(name);
 		sn.setBounds(text_x, text_y, 250, 40);
 		sn.setFont(nameFont);
+		sn.setEditable(false);
 		add(sn);
 		
 		text_y += 50;
@@ -73,7 +74,7 @@ public class GuiWindow extends Frame implements ActionListener
 		if(i % 8 == 0)
 		{
 			text_x += 260;
-			text_y = 10;
+			text_y = 30;
 		}
 	}
 
